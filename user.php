@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,11 +32,10 @@
         <a style="padding:2px 10px;" class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
       </div>
       <div style="margin-left:1000px;margin-top:10px;">
-        <?php session_start(); ?>
-        <p style="font-family:italic;"class="text-primary" >Hello <?php echo $_SESSION['username'] ?> </p>
+        <p style="font-family:italic;"class="text-primary" >Hello <?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'); ?> </p>
       </div>
       <div style="margin-left:50px;">
-        <a style="font-family:italic;"href="/onlinebookstore/index.php">log out</a>
+        <a style="font-family:italic;"href="logout.php">log out</a>
       </div>
       
     </div>
