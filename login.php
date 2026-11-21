@@ -17,6 +17,7 @@ if(isset($_POST['validate']))
             $message[] = 'login success';
             $row = mysqli_fetch_assoc($stm);
             session_start();
+            session_regenerate_id(true);
             $_SESSION['username']=$row['username'];
             header("Location:user.php");
             exit();
